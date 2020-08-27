@@ -22,17 +22,20 @@ class Job_Words_Main():
                     return True
         return False
 
+    def _get_jobs_from_page(self,page_number,job):
+        url = "https://ie.indeed.com/jobs?q={{ROLE}}&l={{LOCATION}}" + "&start={{START}}"
+        url = url.replace("{{ROLE}}", job).replace("{{LOCATION}}", "Dublin")
+        url = url.replace("{{START}}", str(page_number))
+        all_jobs_result = requests.get(url)
+        return BeautifulSoup(all_jobs_result.content, "html.parser")
+
     def find_indeed(self, job):
 
         page_number = 0
-        
-        while page_number < self.config['page_count']:
-            url = "https://ie.indeed.com/jobs?q={{ROLE}}&l={{LOCATION}}" + "&start={{START}}"
-            url = url.replace("{{ROLE}}", job).replace("{{LOCATION}}", "Dublin")
-            url = url.replace("{{START}}", str(page_number))
-            all_jobs_result = requests.get(url)
-            all_jobs_soup = BeautifulSoup(all_jobs_result.content, "html.parser")
 
+        while page_number < self.config['page_count']:
+            all_jobs_soup = self._get_jobs_from_page(page_number,job)
+            
             # TODO implement dupe protection
             for title in all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}):
                 if 'company' in title.attrs['href']:

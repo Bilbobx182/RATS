@@ -10,7 +10,7 @@ Armed with data, only then can you make decissions that pierce through the fog o
 _“A goal without a plan is just a wish.”Antoine de Saint-Exupéry_.
 So here are the project milestones.
 
-- [ ] Pull data from Job boards.
+- [x] Pull data from Job boards.
 - [ ] `INSERT` relevant Job data into a GraphQL DB.
 - [ ] Create cron to insert data.
 - [ ] Create Hello World react page.
@@ -21,3 +21,4 @@ Long term :
 - [ ] Create plan for cloud provider of choice (not you Azure).
 - [ ] Create infra for project.
 - [ ] Deploy!
+

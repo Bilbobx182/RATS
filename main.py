@@ -25,9 +25,8 @@ class Job_Words_Main():
     def find_indeed(self, job):
 
         page_number = 0
-
-        #TODO Make this 5 a variable from the config.
-        while page_number < 5:
+        
+        while page_number < self.config['page_count']:
             url = "https://ie.indeed.com/jobs?q={{ROLE}}&l={{LOCATION}}" + "&start={{START}}"
             url = url.replace("{{ROLE}}", job).replace("{{LOCATION}}", "Dublin")
             url = url.replace("{{START}}", str(page_number))
@@ -57,9 +56,9 @@ class Job_Words_Main():
                         self.wordcount[word] = 1
 
     def __init__(self):
-        config = helpers.get_json("config.json")
+        self.config = helpers.get_json("config.json")
         print("Starting!")
-        for job in config['jobs']:
+        for job in self.config['jobs']:
             self.find_indeed(job)
             self.get_word_count_in()
 

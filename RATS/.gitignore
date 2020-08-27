@@ -1,6 +1,9 @@
 #TODO GENERIC GIT IGNORE, MAKE THIS SPECIFIC ADD REACT THINGS LATER
 # https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 
+# JetBrains Ignore
+idea/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

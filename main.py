@@ -32,12 +32,12 @@ class Job_Words_Main():
     def find_indeed(self, job):
 
         page_number = 0
-
         while page_number < self.config['page_count']:
             all_jobs_soup = self._get_jobs_from_page(page_number,job)
-            
-            # TODO implement dupe protection
-            for title in all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}):
+
+            jobs = helpers.remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
+
+            for title in jobs:
                 if 'company' in title.attrs['href']:
                     print(f"SEARCHING : https://ie.indeed.com{title.attrs['href']}")
                     result = requests.get(f"https://ie.indeed.com{title.attrs['href']}")

@@ -5,7 +5,8 @@ import requests
 from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from .support_functions import *
+from backend.helpers.genericHelper import GenericHelper
+import os
 
 wnl = WordNetLemmatizer()
 
@@ -35,7 +36,7 @@ class JobSearch:
         while page_number < self.config['page_count']:
             all_jobs_soup = self._get_jobs_from_page(page_number,job)
 
-            jobs = remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
+            jobs = self.helper.remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
 
             for title in jobs:
                 if 'company' in title.attrs['href']:
@@ -59,7 +60,9 @@ class JobSearch:
                         self.wordcount[word] = 1
 
     def __init__(self):
-        self.config = get_json("config.json")
+        self.helper = GenericHelper()
+        print(os.getcwd())
+        self.config = self.helper.get_json(f"{os.getcwd()}/config.json")
         print("Starting!")
         for job in self.config['jobs']:
             self.find_indeed(job)
@@ -69,4 +72,5 @@ class JobSearch:
             print(item + "," + str(self.wordcount[item]))
 
 
-search = JobSearch()
+if __name__ == "__main__":
+    search = JobSearch()

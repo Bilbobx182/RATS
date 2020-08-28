@@ -7,13 +7,13 @@ What if I had the capacity to see what they see? To predict what they predict? T
 Armed with data, only then can you make decissions that pierce through the fog of the future and make projects with technologies that are rising in demand.
 
 ## Objectives 
-_“A goal without a plan is just a wish.”Antoine de Saint-Exupéry_.
+“A goal without a plan is just a wish.”Antoine de Saint-Exupéry_.
 So here are the project milestones.
 
 - [x] Pull data from Job boards.
+- [x] Create Hello World react page.
 - [ ] `INSERT` relevant Job data into a GraphQL DB.
 - [ ] Create cron to insert data.
-- [ ] Create Hello World react page.
 - [ ] Hook GraphQL + Apollo + React together in basic Hello world.
 
 Long term :

@@ -5,12 +5,12 @@ import requests
 from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-import helpers
+from .support_functions import *
 
 wnl = WordNetLemmatizer()
 
 
-class Job_Words_Main():
+class JobSearch:
     words_list_from_indeed = []
     wordcount = {}
 
@@ -35,7 +35,7 @@ class Job_Words_Main():
         while page_number < self.config['page_count']:
             all_jobs_soup = self._get_jobs_from_page(page_number,job)
 
-            jobs = helpers.remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
+            jobs = remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
 
             for title in jobs:
                 if 'company' in title.attrs['href']:
@@ -59,7 +59,7 @@ class Job_Words_Main():
                         self.wordcount[word] = 1
 
     def __init__(self):
-        self.config = helpers.get_json("config.json")
+        self.config = get_json("config.json")
         print("Starting!")
         for job in self.config['jobs']:
             self.find_indeed(job)
@@ -69,4 +69,4 @@ class Job_Words_Main():
             print(item + "," + str(self.wordcount[item]))
 
 
-jw = Job_Words_Main()
+search = JobSearch()

@@ -1,3 +1,7 @@
 requests
 beautifulsoup4
 nltk
+graphene
+alembic
+sqlalchemy
+psycopg2-binary

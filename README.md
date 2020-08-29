@@ -19,12 +19,12 @@ So here are the project milestones.
 
 ### Tech Stack :  Backend
 
-- Docker   : Used as the container tool for the services.
-- Postgres : Acts as the database, store the relational data.
-- Alembic  : Used as a database migration tool.
-- SQLAlchemy : Map the database tables in objects. (ORM)
-- Flask    : Used to serve the GraphQL.
-- GraphQL  : GraphQL is a declarative data fetching endpoint and query language for APIs
+- Docker        📦: Used as the container tool for the services.
+- Postgres      💾: Acts as the database, store the relational data.
+- Alembic       🔗: Used as a database migration tool.
+- SQLAlchemy    🗺️: Map the database tables in objects. (ORM)
+- Flask         🧑: Used to serve the GraphQL.
+- GraphQL       📁: GraphQL is a declarative data fetching endpoint and query language for APIs
 
 ### Tech Stack : Frontend
 

@@ -1,7 +1,11 @@
 requests
-beautifulsoup4
-nltk
+beautifulsoup4 # Scrape data
+nltk # Used to perform natural langauge processing.
+alembic # Manages the database migrations
+sqlalchemy #SQL ORM
+psycopg2-binary #Postgres Database adapter
+flask #Common minimalistic API tool.
+flask-graphql # Adds GraphQL support to your Flask application.
+flask-migrate
 graphene
-alembic
-sqlalchemy
-psycopg2-binary
+graphene-sqlalchemy

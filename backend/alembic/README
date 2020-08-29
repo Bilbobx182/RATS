@@ -1,1 +1,11 @@
-Generic single-database configuration.
+# Alembic
+
+Alembic is a DB Migration tool. Think of it as git for DB changes if you've never been around anything like it.
+
+This way it will be easy to init then migrate for others to reproduce.
+
+
+## Commands
+
+- `alembic revision -m "Message here"` Creates a new revision.
+- `alembic upgrade head` to apply the changes.

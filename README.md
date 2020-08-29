@@ -10,13 +10,20 @@ Armed with data, only then can you make decissions that pierce through the fog o
 “A goal without a plan is just a wish.”Antoine de Saint-Exupéry_.
 So here are the project milestones.
 
+
+### Phase 0 Start
 - [x] Pull data from Job boards.
+
 - [x] Create Hello World react page.
-- [ ] `INSERT` relevant Job data into a GraphQL DB.
-- [ ] Create cron to insert data.
+- [x] Create Alembic config and perform init migrations.
+- [x] `INSERT` dummy job data into a Postgres DB.
+- [ ] Create the API endpoint for the frontend.
 - [ ] Hook GraphQL + Apollo + React together in basic Hello world.
 
-Long term :
+### Phase 1 : Leggo (Putting the building blocks together)
+- [ ] Create cron to insert data
+- [ ] Dockerise the frontend and backend.
+
 - [ ] Investigate GCP (since I know how to do this in AWS best to broaden mysef)
 - [ ] Create plan for cloud provider of choice (not you Azure).
 - [ ] Create infra for project.

@@ -7,10 +7,12 @@ from backend.app import db
 
 class Location(db.Model):
     __tablename__ = 'location'
-    location_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    country = db.Column(db.String, nullable=True)
-    state = db.Column(db.String, nullable=True)
-    city = db.Column(db.String, nullable=True)
+    __table_args__ = {'extend_existing': True}
+
+    location_id = db.Column(db.Integer, primary_key=True)
+    country = db.Column(db.String)
+    state = db.Column(db.String)
+    city = db.Column(db.String)
 
     def __init__(self, location_id,country,state,city):
       self.location_id = location_id
@@ -23,9 +25,11 @@ class Location(db.Model):
 
 class Word(db.Model):
     __tablename__ = 'word'
+    __table_args__ = {'extend_existing': True}
+
     word_id = db.Column(db.String, primary_key=True)
-    jobs_fk = db.ARRAY(db.String, nullable=True)
-    frequency = db.Column(db.Integer,nullable=True)
+    jobs_fk = db.ARRAY(db.String)
+    frequency = db.Column(db.Integer)
 
     def __init__(self, word_id, jobs_fk):
         self.word_id = word_id
@@ -38,13 +42,12 @@ class Word(db.Model):
 
 class Company(db.Model):
     __tablename__ = 'company'
+    __table_args__ = {'extend_existing': True}
 
     company_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=True)
-    location_id = db.Column(db.Integer,db.ForeignKey('location.location_id'), nullable=True)
-    jobs_fk = db.Column(db.String, nullable=True)
-
-    books = db.relationship('Book', backref='author')
+    name = db.Column(db.String)
+    location_id = db.Column(db.Integer,db.ForeignKey('location.location_id'))
+    jobs_fk = db.Column(db.String)
 
     def __init__(self, username, email):
       self.username = username
@@ -58,16 +61,17 @@ class Company(db.Model):
 
 class Job(db.Model):
     __tablename__ = 'job'
+    __table_args__ = {'extend_existing': True}
 
     job_id = db.Column(db.Integer, primary_key=True)
-    company_id = db.Column(db.Integer,db.ForeignKey('company.company_id'), nullable=True)
-    locations_id = db.Column(db.String, nullable=True)
-    contents = db.Column(db.String, nullable=True)
-    pay = db.Column(db.String, nullable=True)
-    date_posted = db.Column(db.String, nullable=True)
-    has_pension = db.Column(db.Boolean, nullable=True)
-    has_healthcare = db.Column(db.Boolean, nullable=True)
-    has_stock = db.Column(db.Boolean, nullable=True)
+    company_id = db.Column(db.Integer,db.ForeignKey('company.company_id'))
+    locations_id = db.Column(db.String)
+    contents = db.Column(db.String)
+    pay = db.Column(db.String)
+    date_posted = db.Column(db.String)
+    has_pension = db.Column(db.Boolean)
+    has_healthcare = db.Column(db.Boolean)
+    has_stock = db.Column(db.Boolean)
 
     def __init__(self, job_id, company_id, location_id,contents,pay,date_posted,has_pension, has_healthcare, has_stock):
       self.job_id = job_id

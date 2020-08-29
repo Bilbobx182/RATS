@@ -40,11 +40,11 @@ So here are the project milestones.
 - [ ] Hook GraphQL + Apollo + React together in basic Hello world.
 
 ### Phase 1 : Leggo (Putting the building blocks together)
-- [ ] Create cron to insert data
 - [ ] Dockerise the frontend and backend.
 
 - [ ] Investigate GCP (since I know how to do this in AWS best to broaden mysef)
 - [ ] Create plan for cloud provider of choice (not you Azure).
-- [ ] Create infra for project.
+- [ ] Create infra for project using Terraform.
+- [ ] Create cron to insert data
 - [ ] Deploy!
 

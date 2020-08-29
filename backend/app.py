@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_graphql import GraphQLView
-from backend.schema_objects import get_schema
+from backend.models.schema_objects import get_schema
 app = Flask(__name__)
 
 

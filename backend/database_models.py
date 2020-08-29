@@ -1,8 +1,4 @@
-# Modules
-import sqlalchemy
-from flask_sqlalchemy import SQLAlchemy
-from backend.app import db
-# Models
+from backend.extensions import db
 
 
 class Location(db.Model):

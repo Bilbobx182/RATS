@@ -1,3 +1,5 @@
+from sqlalchemy.orm import relationship, foreign
+
 from backend.extensions import db
 
 
@@ -62,6 +64,7 @@ class Job(db.Model):
     job_id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer,db.ForeignKey('company.company_id'))
     locations_id = db.Column(db.String)
+    title = db.Column(db.String)
     contents = db.Column(db.String)
     pay = db.Column(db.String)
     date_posted = db.Column(db.String)
@@ -69,8 +72,9 @@ class Job(db.Model):
     has_healthcare = db.Column(db.Boolean)
     has_stock = db.Column(db.Boolean)
 
-    def __init__(self, job_id, company_id, location_id,contents,pay,date_posted,has_pension, has_healthcare, has_stock):
+    def __init__(self, job_id, title,company_id, location_id,contents,pay,date_posted,has_pension, has_healthcare, has_stock):
       self.job_id = job_id
+      self.title = title
       self.company_id = company_id
       self.locations_id = location_id
       self.contents = contents

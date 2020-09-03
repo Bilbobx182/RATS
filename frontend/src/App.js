@@ -4,6 +4,14 @@ import './App.css';
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 
+const Header = () =>
+     (
+        <header lassName='header_banner'>
+            <h1>Rats Job finder</h1>
+        </header>
+    );
+
+
 const GET_USERS = gql`
 {
   allLocations {
@@ -31,6 +39,7 @@ function App() {
 
   return (
     <main className="App">
+      <Header></Header>
       <h1>Items</h1>
       {data.allLocations.edges.map(
         item => (

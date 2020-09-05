@@ -31,11 +31,11 @@ const Search = () => {
     /* DisplayToggles wrapper for Docs only */
 
       <EuiFieldSearch
-        placeholder="Search this"
+      placeholder="https://indeed etc"
+        fullWidth={true}
         value={value}
         onChange={e => onChange(e)}
         isClearable={isClearable}
-        aria-label="Use aria labels when no actual label is in use"
       />
   );
 };
@@ -54,19 +54,19 @@ TODO Configure colour themes
 
 
 function App() {
-  const { loading, error, data } = useQuery(GET_USERS)
+  // const { loading, error, data } = useQuery(GET_USERS)
 
-  if (error) return <h1>Something went wrong!</h1>
-  if (loading) return <h1>Loading...</h1>
+  // if (error) return <h1>Something went wrong!</h1>
+  // if (loading) return <h1>Loading...</h1>
 
   return (
     <main className="App">
      <HeaderBar></HeaderBar>
      <Search></Search>
       <h1>Items</h1>
-      {data.allLocations.edges.map(
+      {/* {data.allLocations.edges.map(
         item => (
-        <Location key={item.node.id} item={item.node} />))}
+        <Location key={item.node.id} item={item.node} />))} */}
     </main>
   )
 }

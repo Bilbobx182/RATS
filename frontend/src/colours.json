@@ -1,8 +1,8 @@
 {
-   "primary" : "#263238",
-   "primary_light" : "#4f5b62",
-   "primary_dark" : "#0000a12",
-   "alt" : "#fdd835",
-   "alt_light" : "#ffff6b",
-   "alt_dark" : "#c79100"
+   "primary" : "#e0e0e0",
+   "primary_light" : "#ffffff",
+   "primary_dark" : "#aeaeae",
+   "alt" : "#1976d2",
+   "alt_light" : "#63a4ff",
+   "alt_dark" : "#004ba0"
 }

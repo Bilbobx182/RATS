@@ -5,35 +5,7 @@ import gql from "graphql-tag"
 import "@elastic/eui/dist/eui_theme_light.css";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import { EuiFieldSearch, EuiSwitch } from '@elastic/eui';
-
-const CiaranNavbar = ()  => {
-    return (
-      <EuiFlexGroup gutterSize="s" alignItems="stretch">
-      <EuiFlexItem grow={false}>
-        <EuiButton onClick={() => window.alert("Button clicked")}>
-          Primary
-        </EuiButton>
-      </EuiFlexItem>
-    
-      <EuiFlexItem grow={false}>
-        <EuiButton fill onClick={() => window.alert("Button clicked")}>
-          Filled
-        </EuiButton>
-      </EuiFlexItem>
-    </EuiFlexGroup>
-    )
-}
-
-
-const Header = () => {
-     return (
-        <header className='header_banner'>
-            <h1>Rats Job finder</h1>
-            <CiaranNavbar></CiaranNavbar>
-        </header>
-    );
-    };
-  
+import {HeaderBar} from  "./components/header_bar.js";
 
 const GET_USERS = gql`
 {
@@ -85,7 +57,7 @@ function App() {
 
   return (
     <main className="App">
-     <Header></Header>
+     <HeaderBar></HeaderBar>
      <Search></Search>
       <h1>Items</h1>
       {data.allLocations.edges.map(

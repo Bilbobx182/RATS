@@ -48,6 +48,10 @@ const Location = ({item : {city}}) => (
 )
 
 
+{/* 
+TODO Configure colour themes
+*/}
+
 
 function App() {
   const { loading, error, data } = useQuery(GET_USERS)

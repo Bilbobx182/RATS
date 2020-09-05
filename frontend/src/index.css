@@ -19,6 +19,10 @@ code {
   width: 100%;
 }
 
+.euiFlexItem.euiFlexItem--flexGrowZero {
+  flex-grow: 4;
+}
+
 .header_banner {
   background-color: #e0e0e0;
 }

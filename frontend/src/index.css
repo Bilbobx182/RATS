@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #aeaeae;
+  background-color: #E5E5E5;
 }
 
 code {
@@ -28,7 +28,7 @@ code {
 }
 
 .filled-basic {
-  background-color: #aeaeae;
+  background-color: #E5E5E5;
 }
 
 * {

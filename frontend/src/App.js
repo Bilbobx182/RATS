@@ -3,10 +3,8 @@ import './App.css';
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 import "@elastic/eui/dist/eui_theme_light.css";
-import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
-import { EuiFieldSearch, EuiSwitch } from '@elastic/eui';
-import {HeaderBar} from  "./components/header_bar.js";
-import {Search} from  "./components/search.js";
+import { HeaderBar } from "./components/header_bar.js";
+import { Search } from "./components/search.js";
 
 const GET_USERS = gql`
 {
@@ -20,9 +18,9 @@ const GET_USERS = gql`
 }
 `
 
-const Location = ({item : {city}}) => (
+const Location = ({ item: { city } }) => (
   <div className="Location">
-      <h1 className="Location--name">{city}</h1>
+    <h1 className="Location--name">{city}</h1>
   </div>
 )
 
@@ -35,29 +33,29 @@ TODO Configure colour themes
 class App extends React.Component {
 
   state = {
-    search_state : {
-      searchData : "",
-      isClearable : true,
-      value : "",
+    search_state: {
+      searchData: "",
+      isClearable: true,
+      value: "",
       searching: false,
-      searchResult : ""
+      searchResult: ""
     }
   }
 
-  changeValue(value){
+  changeValue(value) {
     console.log("APP HELLO WORLD");
-    console.log({value});
+    console.log({ value });
   }
 
-  updateSearchDataState = searchData => this.setState({searchData})
+  updateSearchDataState = searchData => this.setState({ searchData })
 
   render() {
     return (
       <main className="App">
-      <HeaderBar></HeaderBar>
-      <Search changeValue={this.changeValue}></Search>
-       <h1>Items</h1>
-     </main>
+        <HeaderBar></HeaderBar>
+        <Search changeValue={this.changeValue}></Search>
+        <h1>Items</h1>
+      </main>
     )
   }
 }

@@ -6,6 +6,7 @@ import "@elastic/eui/dist/eui_theme_light.css";
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import { EuiFieldSearch, EuiSwitch } from '@elastic/eui';
 import {HeaderBar} from  "./components/header_bar.js";
+import {Search} from  "./components/search.js";
 
 const GET_USERS = gql`
 {
@@ -18,28 +19,6 @@ const GET_USERS = gql`
 }
 }
 `
-
-const Search = () => {
-  const [isClearable, setIsClearable] = React.useState(true);
-  const [value, setValue] = React.useState('');
-
-  const onChange = e => {
-    setValue(e.target.value);
-  };
-
-  return (
-    /* DisplayToggles wrapper for Docs only */
-
-      <EuiFieldSearch
-      placeholder="https://indeed etc"
-        fullWidth={true}
-        value={value}
-        onChange={e => onChange(e)}
-        isClearable={isClearable}
-      />
-  );
-};
-
 
 const Location = ({item : {city}}) => (
   <div className="Location">

@@ -19,7 +19,8 @@ body {
 }
 
 .euiFlexGroup--directionRow {
-background-color: #004BA0;
+background-color: #006bc8;
+justify-content: space-around;
 }
 
 .header_banner {

@@ -32,22 +32,34 @@ TODO Configure colour themes
 */}
 
 
-function App() {
-  // const { loading, error, data } = useQuery(GET_USERS)
+class App extends React.Component {
 
-  // if (error) return <h1>Something went wrong!</h1>
-  // if (loading) return <h1>Loading...</h1>
+  state = {
+    search_state : {
+      searchData : "",
+      isClearable : true,
+      value : "",
+      searching: false,
+      searchResult : ""
+    }
+  }
 
-  return (
-    <main className="App">
-     <HeaderBar></HeaderBar>
-     <Search></Search>
-      <h1>Items</h1>
-      {/* {data.allLocations.edges.map(
-        item => (
-        <Location key={item.node.id} item={item.node} />))} */}
-    </main>
-  )
+  changeValue(value){
+    console.log("APP HELLO WORLD");
+    console.log({value});
+  }
+
+  updateSearchDataState = searchData => this.setState({searchData})
+
+  render() {
+    return (
+      <main className="App">
+      <HeaderBar></HeaderBar>
+      <Search changeValue={this.changeValue}></Search>
+       <h1>Items</h1>
+     </main>
+    )
+  }
 }
 
 export default App

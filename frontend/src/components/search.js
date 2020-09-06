@@ -3,14 +3,18 @@ import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import { EuiFieldSearch, EuiSwitch } from '@elastic/eui';
 import React from 'react';
 
-export class Search extends React.Component  {
+export class Search extends React.Component   {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            isClearable : true,
+            value : "",
+            searching: false,
+            searchResult : ""
+            };
+      }
 
-    state = {
-        isClearable : true,
-        value : "",
-        searching: false
-    }
 
     _performRequest() {
         console.log("PERFORMING REQUEST");
@@ -25,23 +29,14 @@ export class Search extends React.Component  {
               body: JSON.stringify({title: "JOB TITLE HERE"})
             });
             const content = await rawResponse.json();
-          
+            console.log("update");
+            this.props.changeValue(this.state);
+            console.log("update state");
             console.log(content);
           })();
-
-        // const apiUrl = 'http://localhost:5000/dummy_words';
-        // fetch(apiUrl)
-        //   .then((response) => response.json())
-        //   .then((data) => console.log('This is your data', data));
-
-        //   this.setState( () => { return {
-        //     searching: false
-        // }});
-        
-
     }
 
-    onChange= (e) => {
+    updateSearchWords= (e) => {
         console.log(e.target.value);
         this.setState(prevState => { return {
             value: e.target.value
@@ -52,8 +47,6 @@ export class Search extends React.Component  {
       _handleKeyDown =  (e) => {
     
         if (e.key === 'Enter') {
-          console.log('HELLO WORLD ENTER');
-
           this.setState(prevState => { return {
             searching : !prevState.searching
         }
@@ -63,13 +56,12 @@ export class Search extends React.Component  {
       }
 
     render() {
-
         return (            
             <EuiFieldSearch
-            placeholder="https://indeed etc"
+            placeholder="Placeholder"
             fullWidth={true}
             value={this.value}
-            onChange={e => {e.persist(); this.onChange(e)}}
+            onChange={e => {e.persist(); this.updateSearchWords(e)}}
             onKeyDown={this._handleKeyDown}
             isClearable={this.isClearable}
           />

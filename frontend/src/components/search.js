@@ -8,7 +8,37 @@ export class Search extends React.Component  {
 
     state = {
         isClearable : true,
-        value : ""
+        value : "",
+        searching: false
+    }
+
+    _performRequest() {
+        console.log("PERFORMING REQUEST");
+
+        (async () => {
+            const rawResponse = await fetch('http://localhost:5000/dummy_words', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({title: "JOB TITLE HERE"})
+            });
+            const content = await rawResponse.json();
+          
+            console.log(content);
+          })();
+
+        // const apiUrl = 'http://localhost:5000/dummy_words';
+        // fetch(apiUrl)
+        //   .then((response) => response.json())
+        //   .then((data) => console.log('This is your data', data));
+
+        //   this.setState( () => { return {
+        //     searching: false
+        // }});
+        
+
     }
 
     onChange= (e) => {
@@ -19,6 +49,19 @@ export class Search extends React.Component  {
       });
       }
 
+      _handleKeyDown =  (e) => {
+    
+        if (e.key === 'Enter') {
+          console.log('HELLO WORLD ENTER');
+
+          this.setState(prevState => { return {
+            searching : !prevState.searching
+        }
+      });
+      this._performRequest();
+        }
+      }
+
     render() {
 
         return (            
@@ -27,6 +70,7 @@ export class Search extends React.Component  {
             fullWidth={true}
             value={this.value}
             onChange={e => {e.persist(); this.onChange(e)}}
+            onKeyDown={this._handleKeyDown}
             isClearable={this.isClearable}
           />
         )

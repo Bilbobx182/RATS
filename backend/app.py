@@ -2,6 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_graphql import GraphQLView
 from backend.models.schema_objects import get_schema
+from flask import request
+from flask import jsonify
+
 app = Flask(__name__)
 
 
@@ -16,6 +19,11 @@ app.add_url_rule(
     )
 )
 
+@app.route('/dummy_words', methods = ['POST'])
+def user():
+    if request.method == 'POST':
+        print(request.json['title'])
+        return jsonify({'Hello': 1, "World": 3, "Ciaran": 4})
 
 @app.route('/')
 def index():

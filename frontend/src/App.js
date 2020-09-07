@@ -5,30 +5,7 @@ import gql from "graphql-tag"
 import "@elastic/eui/dist/eui_theme_light.css";
 import { HeaderBar } from "./components/header_bar.js";
 import { Search } from "./components/search.js";
-
-const GET_USERS = gql`
-{
-  allLocations {
-  edges {
-    node {
-      id,city
-    }
-  }
-}
-}
-`
-
-const Location = ({ item: { city } }) => (
-  <div className="Location">
-    <h1 className="Location--name">{city}</h1>
-  </div>
-)
-
-
-{/* 
-TODO Configure colour themes
-*/}
-
+import { CardedDonutChart } from "./components/carded_donutchart.js";
 
 class App extends React.Component {
 
@@ -45,15 +22,19 @@ class App extends React.Component {
   changeValue(value) {
     console.log("APP HELLO WORLD");
     console.log({ value });
-  }
 
-  updateSearchDataState = searchData => this.setState({ searchData })
+    this.setState( () => ({
+      searchData: value.value
+  }));
+  }
 
   render() {
     return (
       <main className="App">
         <HeaderBar></HeaderBar>
-        <Search changeValue={this.changeValue}></Search>
+        <Search changeValue={this.changeValue.bind(this)}></Search>
+
+        <CardedDonutChart data={this.searchData}></CardedDonutChart>
         <h1>Items</h1>
       </main>
     )

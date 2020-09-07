@@ -16,8 +16,8 @@ export class CardedDonutChart extends React.Component {
         <EuiFlexItem>
             <EuiCard
         
-          textAlign="left"
-          title="Card 1"
+          textAlign="center"
+          title="Word Frequency"
           description={
             <span>
                     <div className="ChartStyle">
@@ -25,41 +25,7 @@ export class CardedDonutChart extends React.Component {
         </div>
             </span>  
             }/>
-
-          </EuiFlexItem>
-
-          <EuiFlexItem>
-            <EuiCard
-        
-          textAlign="left"
-          title="Card 2"
-          description={
-            <span>
-                    <div className="ChartStyle">
-        <Doughnut  data={this.props.graphData} />
-        </div>
-            </span>  
-            }/>
-
-          </EuiFlexItem>
-
-
-
-          <EuiFlexItem>
-            <EuiCard
-        
-          textAlign="left"
-          title="Card 3"
-          description={
-            <span>
-                    <div className="ChartStyle">
-        <Doughnut  data={this.props.graphData} />
-        </div>
-            </span>  
-            }/>
-
-          </EuiFlexItem>
-
+            </EuiFlexItem>
         </EuiFlexGroup>
         
           </div>

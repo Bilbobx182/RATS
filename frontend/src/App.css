@@ -19,9 +19,13 @@ body {
 }
 
 
-.ChartStyle {
+/* .ChartStyle {
  width: 80%;
  height: 80%;
+} */
+
+.cardedDonutChart {
+  margin-top: 2%;
 }
 
 .euiFlexGroup--directionRow {

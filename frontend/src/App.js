@@ -3,9 +3,9 @@ import './App.css';
 import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
 import "@elastic/eui/dist/eui_theme_light.css";
-import { HeaderBar } from "./components/header_bar.js";
-import { Search } from "./components/search.js";
-import { CardedDonutChart } from "./components/carded_donutchart.js";
+import { HeaderBar } from "./components/component_header.js";
+import { Search } from "./components/component_search.js";
+import { CardedDonutChart } from "./components/component_donutchart.js";
 
 class App extends React.Component {
 

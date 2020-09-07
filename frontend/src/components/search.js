@@ -28,9 +28,9 @@ export class Search extends React.Component {
                 body: JSON.stringify({ title: "JOB TITLE HERE" })
             });
             const content = await rawResponse.json();
-            console.log("update");
-            this.props.changeValue(this.state);
-            console.log("update state");
+            console.log("Setting Content")
+            this.props.changeValue(content);
+            console.log("Content set");
             console.log(content);
         })();
     }
@@ -47,12 +47,12 @@ export class Search extends React.Component {
     _handleKeyDown = (e) => {
 
         if (e.key === 'Enter') {
+            this._performRequest()
             this.setState(prevState => {
                 return {
                     searching: !prevState.searching
                 }
             });
-            this._performRequest();
         }
     }
 

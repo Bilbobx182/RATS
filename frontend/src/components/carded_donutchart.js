@@ -11,7 +11,7 @@ export class CardedDonutChart extends React.Component {
     render() {
         return (
           <div className="cardedDonutChart">
-                <Doughnut data={this.props.data} />
+                <Doughnut data={this.props.graphData} />
           </div>
         )
     }

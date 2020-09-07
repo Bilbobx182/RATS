@@ -10,8 +10,9 @@ import { CardedDonutChart } from "./components/carded_donutchart.js";
 class App extends React.Component {
 
   state = {
+    searchData : {},
     search_state: {
-      searchData: "",
+      id : 0,
       isClearable: true,
       value: "",
       searching: false,
@@ -20,11 +21,13 @@ class App extends React.Component {
   }
 
   changeValue(value) {
-    console.log("APP HELLO WORLD");
-    console.log({ value });
-
+    console.log(value);
     this.setState( () => ({
-      searchData: value.value
+      searchData : value
+  }));
+
+  this.setState( prevState => ({
+    id : (prevState.search_state.id + 1).toString()
   }));
   }
 
@@ -34,7 +37,7 @@ class App extends React.Component {
         <HeaderBar></HeaderBar>
         <Search changeValue={this.changeValue.bind(this)}></Search>
 
-        <CardedDonutChart data={this.searchData}></CardedDonutChart>
+        <CardedDonutChart graphData={this.state.searchData} key={this.state.search_state.id}></CardedDonutChart>
         <h1>Items</h1>
       </main>
     )

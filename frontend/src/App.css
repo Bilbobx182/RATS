@@ -18,6 +18,12 @@ body {
   }
 }
 
+
+.ChartStyle {
+ width: 80%;
+ height: 80%;
+}
+
 .euiFlexGroup--directionRow {
 background-color: #006bc8;
 justify-content: space-around;

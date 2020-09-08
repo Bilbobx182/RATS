@@ -22,13 +22,13 @@ class NavBar extends React.Component {
 
             <EuiFlexGroup gutterSize="s" alignItems="stretch">
 
-                {this.state.button_options.map(state_button =>
+                {/* {this.state.button_options.map(state_button =>
                     <EuiFlexItem grow={false} key={state_button.id}>
                         <EuiButton fill onClick={() => window.alert("Button clicked")}>
                             {state_button.button_text}
                         </EuiButton>
                     </EuiFlexItem>
-                )}
+                )} */}
             </EuiFlexGroup>
         )
     }

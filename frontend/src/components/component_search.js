@@ -1,6 +1,7 @@
 import "@elastic/eui/dist/eui_theme_light.css";
 import { EuiFieldSearch } from '@elastic/eui';
 import React from 'react';
+import {DropdownComponent}  from './component_dropdown.js';
 
 export class Search extends React.Component {
 
@@ -58,13 +59,16 @@ export class Search extends React.Component {
 
     render() {
         return (
-            <EuiFieldSearch
+            <div className='SearchComponent'> 
+                <EuiFieldSearch
                 placeholder="Placeholder"
                 fullWidth={true}
                 value={this.value}
                 onChange={e => { e.persist(); this.updateSearchWords(e) }}
                 onKeyDown={this._handleKeyDown}
                 isClearable={this.isClearable}/>
+                <DropdownComponent> </DropdownComponent>
+            </div>       
         )
     }
 }

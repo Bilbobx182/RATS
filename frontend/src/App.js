@@ -16,7 +16,9 @@ class App extends React.Component {
       isClearable: true,
       value: "",
       searching: false,
-      searchResult: ""
+      searchResult: "",
+      colours: ['#ab47bc','#42a5f5','#26c6da','#66bb6a','#ffca28','#ff7043'],
+      coloursAccent: ['#ce93d8','#90caf9','#80deea','#a5d6a7','#fff59d','#ffab91']
     }
   }
 
@@ -37,7 +39,8 @@ class App extends React.Component {
         <HeaderBar></HeaderBar>
         <Search changeValue={this.changeValue.bind(this)}></Search>
 
-        <CardedDonutChart graphData={this.state.searchData} key={this.state.search_state.id}></CardedDonutChart>
+        <CardedDonutChart 
+        graphData={this.state.searchData} key={this.state.search_state.id}></CardedDonutChart>
         <h1>Items</h1>
       </main>
     )

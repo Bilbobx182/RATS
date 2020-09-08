@@ -16,7 +16,7 @@ export class CardedDonutChart extends React.Component {
         <EuiFlexItem>
             <EuiCard
         
-          textAlign="center"
+          textAlign="Center"
           title="Word Frequency"
           description={
             <span>

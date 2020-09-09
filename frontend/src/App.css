@@ -34,14 +34,28 @@ Component CSS
   margin-top: 2%;
 }
 
+/* Header component CSS */
+.header_banner {
+  background-color: #212121;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-size: 48pt;
+  height: 60px;
+  color: white;
+  display:flex;
+  justify-content: space-around;
+}
+
+.App.header_banner.social {
+  background-color: #212121;
+  display:flex;
+  justify-content: flex-end;
+}
+
 .euiFlexGroup--directionRow {
-background-color: #006bc8;
 justify-content: space-around;
 }
 
-.header_banner {
-  background-color: #E5E5E5;
-}
 
 .App-link {
   color: #61dafb;

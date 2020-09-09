@@ -38,10 +38,10 @@ class App extends React.Component {
       <main className="App">
         <HeaderBar></HeaderBar>
         <Search changeValue={this.changeValue.bind(this)}></Search>
-
         <CardedDonutChart 
-        graphData={this.state.searchData} key={this.state.search_state.id}></CardedDonutChart>
-        <h1>Items</h1>
+          graphData={this.state.searchData}
+           key={this.state.search_state.id}>
+         </CardedDonutChart>
       </main>
     )
   }

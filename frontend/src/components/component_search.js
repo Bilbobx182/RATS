@@ -61,7 +61,7 @@ export class Search extends React.Component {
         return (
             <div className='SearchComponent'>
                 <EuiFieldSearch
-                    placeholder="Placeholder"
+                    placeholder="Enter Job Title here!"
                     fullWidth={true}
                     value={this.value}
                     onChange={e => { e.persist(); this.updateSearchWords(e) }}

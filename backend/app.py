@@ -31,13 +31,7 @@ def user():
                 'World'
             ],
             'datasets': [{
-                'data': [300, 50, 100],
-                'backgroundColor': [
-                    '#42a5f5','#ffca28', '#ff7043', '#ab47bc', '#26c6da', '#66bb6a', '#ec407a'
-                ],
-                'hoverBackgroundColor': [
-                    '#90caf9','#fff59d', '#ffab91', '#ce93d8', '#80deea', '#a5d6a7', '#f48fb1'
-                ]
+                'data': [300, 50, 100]
             }]}
         return jsonify(data)
 

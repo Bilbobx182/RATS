@@ -30,6 +30,7 @@ So here are the project milestones.
 
 - 😍 React   : Act as the view layer, render the pretty data.
 - 🚀 Apollo  : Production ready GraphQL client.
+- 📈 [ReactChartJs2](https://github.com/jerairrest/react-chartjs-2): [_"Look at this graph"_ -nickelback](https://www.youtube.com/watch?v=sIlNIVXpIns)
 
 ### Phase 0 Start
 - [x] Pull data from Job boards.
@@ -37,9 +38,22 @@ So here are the project milestones.
 - [x] Create Alembic config and perform init migrations.
 - [x] `INSERT` dummy job data into a Postgres DB.
 - [X] Create the API endpoint for the frontend.
-- [ ] Hook GraphQL + Apollo + React together in basic Hello world.
+- [X] Hook GraphQL + Apollo + React together in basic Hello world.
 
-### Phase 1 : Leggo (Putting the building blocks together)
+### Phase 1 : K'Nex(t) (Second phase. Primarily focused on base usability of the frontend)
+
+- [X] Create Menu section to React app.
+- [X] Render graph in REACT.
+- [ ] Update REACT frontend to host colours for graphs in state.
+- [ ] Add search dropdown type.
+- [ ] Create ListView of companies and jobs posted.
+- [ ] Create plan for cloud provider of choice (not you Azure).
+- [ ] Create infra for project using Terraform.
+- [ ] Create cron to insert data
+- [ ] Deploy!
+
+
+### Phase 2 : Lego (Putting the building blocks of infrasture together)
 - [ ] Dockerise the frontend and backend.
 
 - [ ] Investigate GCP (since I know how to do this in AWS best to broaden mysef)

@@ -27,14 +27,8 @@ class Word(db.Model):
     __table_args__ = {'extend_existing': True}
 
     word_id = db.Column(db.String, primary_key=True)
-
-    # TODO FIX THIS, IT SHOULDN'T BE AN ARRAY 1:1
-    # 1 JOB listing has X frequency of a word in it.
-    # UPDATE DB
-
-    jobs_fk = db.ARRAY(db.String)
-
-    frequency = db.Column(db.Integer)
+    jobs_fk = db.Column(db.Integer)
+    frequency = db.Integer(db.Integer)
 
     def __init__(self, word_id, jobs_fk):
         self.word_id = word_id

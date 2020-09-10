@@ -18,10 +18,10 @@ export class Search extends React.Component {
     _updateGraphRequest(content) {
 
         const backgroundColor = [
-            '#42a5f5','#ffca28', '#ff7043', '#ab47bc', '#26c6da', '#66bb6a', '#ec407a'
+            '#EF5350','#EC407A', '#AB47BC', '#7E57C2', '#5C6BC0', '#42A5F5', '#29B6F6', '#26C6DA','#26A69A','#66BB6A','#9CCC65','#D4E157','#FFEE58','#FFCA28','#FFA726','#FF7043','#8D6E63','#BDBDBD'
         ]
         const hoverBackgroundColor = [
-            '#90caf9','#fff59d', '#ffab91', '#ce93d8', '#80deea', '#a5d6a7', '#f48fb1'
+            '#FFCDD2','#F8BBD0', '#E1BEE7', '#D1C4E9', '#C5CAE9', '#BBDEFB', '#B3E5FC', '#B2EBF2','#B2DFDB','#C8E6C9','#DCEDC8','#F0F4C3','#FFF9C4','#FFECB3','#FFE0B2','#FFCCBC','#D7CCC8','#F5F5F5'
         ]
     
     content.datasets[0].backgroundColor = (backgroundColor);
@@ -42,7 +42,7 @@ export class Search extends React.Component {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ title: "JOB TITLE HERE" })
+                body: JSON.stringify({ title: this.state.value })
             });
             const content = await rawResponse.json();
             this._updateGraphRequest(content);

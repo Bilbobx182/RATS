@@ -33,7 +33,7 @@ class JobSearch:
     def find_indeed(self, job):
 
         page_number = 0
-        while page_number < self.config['page_count']:
+        while page_number < 1:
             all_jobs_soup = self._get_jobs_from_page(page_number,job)
 
             jobs = self.helper.remove_duplicates_in_dict(all_jobs_soup.find_all('a', {"class": "jobtitle turnstileLink"}))
@@ -59,18 +59,23 @@ class JobSearch:
                     else:
                         self.wordcount[word] = 1
 
-    def __init__(self):
+    def __init__(self,job):
         self.helper = GenericHelper()
-        print(os.getcwd())
-        self.config = self.helper.get_json(f"{os.getcwd()}/config.json")
         print("Starting!")
-        for job in self.config['jobs']:
-            self.find_indeed(job)
-            self.get_word_count_in()
+        self.job = job
 
-        for item in {k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}:
-            print(item + "," + str(self.wordcount[item]))
+    def search(self):
+        self.find_indeed(self.job)
+        self.get_word_count_in()
+        labels = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).keys())
+        data = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).values())
 
+        rest = {
+            'labels': [
+                labels[:10]
+            ],
+            'datasets': [{
+                'data': data[:10]
+            }]}
 
-if __name__ == "__main__":
-    search = JobSearch()
+        return rest

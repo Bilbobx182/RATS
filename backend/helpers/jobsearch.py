@@ -71,11 +71,9 @@ class JobSearch:
         data = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).values())
 
         rest = {
-            'labels': [
-                labels[:10]
-            ],
+            'labels': labels[:15],
             'datasets': [{
-                'data': data[:10]
+                'data': data[:15]
             }]}
 
         return rest

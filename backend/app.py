@@ -24,29 +24,10 @@ app.add_url_rule(
 @app.route('/dummy_words', methods=['POST'])
 def user():
     if request.method == 'POST':
-        # print(request.json['title'])
-        # js = JobSearch(request.json['title'])
-        # data = js.search()
-        # return jsonify(data)
-        labels =['hello','world','pocari','weeb','waifu','ciaran','wee','dying','hey','im','sorry']
-        data = [0,1,2,3,4,5,6,7,8,9]
-
-        hello = {
-            'labels': [
-                'Hello',
-                'Ciaran',
-                'World'
-            ],
-            'datasets': [{
-                'data': [300, 50, 100]
-            }]}
-
-        rest = {
-            'labels': labels,
-            'datasets': [{
-                'data': data
-            }]}
-        return jsonify(rest)
+        print(request.json['title'])
+        js = JobSearch(request.json['title'])
+        data = js.search()
+        return jsonify(data)
 
 
 @app.route('/')

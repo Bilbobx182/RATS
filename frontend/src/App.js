@@ -22,8 +22,8 @@ class App extends React.Component {
     }
   }
 
+
   changeValue(value) {
-    console.log(value);
     this.setState( () => ({
       searchData : value
   }));

@@ -24,9 +24,9 @@ app.add_url_rule(
 @app.route('/dummy_words', methods=['POST'])
 def user():
     if request.method == 'POST':
-        print(request.json['title'])
         js = JobSearch(request.json['title'])
         data = js.search()
+        print(data)
         return jsonify(data)
 
 

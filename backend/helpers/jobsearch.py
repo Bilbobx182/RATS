@@ -15,6 +15,18 @@ class JobSearch:
     words_list_from_indeed = []
     wordcount = {}
 
+    '''
+    TODO PROBLEM!
+    
+    We also don't parse the role yet! This needs to be stored as the title. That's a big todo.
+    
+    We evaluate the wordcount not at each itteration, but at the end.
+    There are performance issues from this though at calculating the frequency at each occurence.
+    Do some tests.
+    We store the word-list in a list, therefore, it's impossible to get the count for a given job.
+    
+    '''
+
     def is_word_noun(self, word):
         word_tags = nltk.pos_tag([word])
         for word_list in word_tags:
@@ -30,6 +42,9 @@ class JobSearch:
         all_jobs_result = requests.get(url)
         return BeautifulSoup(all_jobs_result.content, "html.parser")
 
+    def insertData(self,company=None, words=None):
+        print("hello")
+
     def find_indeed(self, job):
         self.words_list_from_indeed.clear()
         self.wordcount = {}
@@ -42,10 +57,12 @@ class JobSearch:
 
             for title in jobs:
                 if 'company' in title.attrs['href']:
+                    company = title.attrs['href'].split("/")[2]
                     result = requests.get(f"https://ie.indeed.com{title.attrs['href']}")
                     inner_html = BeautifulSoup(result.content, "html.parser")
                     for item in inner_html.find_all("div", {"id": re.compile(r"jobDescriptionText")}):
                         self.words_list_from_indeed.append(item.text)
+                    self.insertData(company)
             page_number += 1
 
     def get_word_count_in(self):

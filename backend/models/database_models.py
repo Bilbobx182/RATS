@@ -1,5 +1,4 @@
 from sqlalchemy.orm import relationship, backref
-
 from backend.extensions import db
 
 
@@ -7,7 +6,7 @@ class Location(db.Model):
     __tablename__ = 'location'
     __table_args__ = {'extend_existing': True}
 
-    location_id = db.Column(db.Integer, primary_key=True)
+    location_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     country = db.Column(db.String)
     state = db.Column(db.String)
     city = db.Column(db.String)
@@ -28,11 +27,12 @@ class Word(db.Model):
 
     word_id = db.Column(db.String, primary_key=True)
     jobs_fk = db.Column(db.Integer)
-    frequency = db.Integer(db.Integer)
+    frequency = db.Column(db.Integer)
 
-    def __init__(self, word_id, jobs_fk):
+    def __init__(self, word_id, jobs_fk, frequency):
         self.word_id = word_id
         self.jobs_fk = jobs_fk
+        self.frequency = frequency
 
     def __repr__(self):
         return '' % self.word_id
@@ -42,16 +42,17 @@ class Company(db.Model):
     __tablename__ = 'company'
     __table_args__ = {'extend_existing': True}
 
+    location = relationship(Location, backref=backref('companies', uselist=True))
+
     company_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     location_id = db.Column(db.Integer, db.ForeignKey('location.location_id'))
-    location = relationship(Location, backref=backref('companies', uselist=True))
-
     jobs_fk = db.Column(db.String)
 
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    def __init__(self, name, location_id, jobs_fk):
+        self.name = name
+        self.location_id = location_id
+        self.jobs_fk = jobs_fk
 
     def __repr__(self):
         return '' % self.id

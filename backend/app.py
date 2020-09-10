@@ -43,8 +43,3 @@ if __name__ == '__main__':
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db = SQLAlchemy(app)
     app.run()
-
-#    from backend.company_model import Location
-# aman = Location(2, country='England', state='London', city='Stratford')
-# db.session.add(aman)
-# db.session.commit()

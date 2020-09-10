@@ -18,9 +18,14 @@ depends_on = None
 
 def upgrade():
     op.execute('ALTER TABLE word ALTER COLUMN jobs_fk Type INTEGER USING jobs_fk::integer;')
+    op.execute('ALTER TABLE JOB ALTER COLUMN job_id Type INTEGER USING job_id::integer; ')
+    op.execute('ALTER TABLE COMPANY ALTER COLUMN company_id Type INTEGER USING company_id::integer;')
+    op.execute('ALTER TABLE JOB ALTER COLUMN contents Type VARCHAR USING contents::VARCHAR;')
     pass
 
 
 def downgrade():
     op.execute('ALTER TABLE word ALTER COLUMN jobs_fk TYPE character varying[];')
+    op.execute('ALTER TABLE JOB ALTER COLUMN job_id TYPE character VARCHAR;')
+    op.execute('ALTER TABLE COMPANY ALTER COLUMN company_id TYPE VARCHAR;')
     pass

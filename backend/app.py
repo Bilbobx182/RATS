@@ -9,8 +9,6 @@ from backend.helpers.jobsearch import JobSearch
 
 app = Flask(__name__)
 
-# Routes
-# Our GraphQL route will go here
 app.add_url_rule(
     '/graphql-api',
     view_func=GraphQLView.as_view(
@@ -36,7 +34,6 @@ def index():
 
 
 if __name__ == '__main__':
-    # initializing our app
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ciarannolan@localhost/rats'
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True

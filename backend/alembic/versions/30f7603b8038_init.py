@@ -29,9 +29,10 @@ def upgrade():
 
     op.create_table('job',
         sa.Column('job_id', sa.INTEGER, primary_key=True, autoincrement=True),
-        sa.Column('company_id', sa.INTEGER,nullable=True),
-        sa.Column('date_posted', sa.VARCHAR, nullable=True),
-        sa.Column('contents', sa.VARCHAR, nullable=True))
+        sa.Column('job_title', sa.VARCHAR),
+        sa.Column('company_id', sa.INTEGER),
+        sa.Column('date_posted', sa.VARCHAR),
+        sa.Column('contents', sa.VARCHAR))
 
 
     op.create_table('company',

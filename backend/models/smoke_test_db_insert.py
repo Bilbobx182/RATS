@@ -13,6 +13,6 @@ dell = Company('Dell')
 session.add(dell)
 session.commit()
 
-indeed_job = Job(3,1,'data some code goes here','01-01-0000')
+indeed_job = Job(3,'Fullstack engineer',1,'data some code goes here','01-01-0000')
 session.add(indeed_job)
 session.commit()

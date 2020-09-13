@@ -1,5 +1,4 @@
 import re
-import nltk
 import requests
 from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
@@ -56,26 +55,31 @@ class JobSearch:
                 page_number += 1
 
     def  get_word_count_in(self,job):
-
             job['words'] =  word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
             for word in job['words']:
                 if len(word) > 3 :
                     word = wnl.lemmatize(word)
+
+                    # Handle the two different scenarios of incrementing
                     if word in job['wordFrequency']:
                        job['wordFrequency'][word] += 1
-                       self.wordcount[word] += 1
+                    else:
+                        job['wordFrequency'][word] = 1
+
+                    if word in self.wordcount:
+                        self.wordcount[word] +=1
                     else:
                         self.words_list_from_indeed.append(word)
                         self.wordcount[word] = 1
-                        job['wordFrequency'][word] = 1
                 else:
-                    print(f"REMOVING: {word}")
                     job['words'].remove(word)
 
 
             self.all_jobs[self.all_jobs.index(job)]['words'] = job['words']
 
     def calculate_information_from_job(self):
+        all_labels = []
+        all_data = []
         for job in self.all_jobs:
             print("---------------")
             print(job)

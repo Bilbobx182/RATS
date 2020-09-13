@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from backend.helpers.genericHelper import GenericHelper
+
 wnl = WordNetLemmatizer()
 
 
@@ -13,7 +14,6 @@ class JobSearch:
     wordcount = {}
 
     maxPageCount = 2
-
 
     def insertData(self, company=None, words=None):
         print("hello")
@@ -35,68 +35,72 @@ class JobSearch:
             indeed_all_jobs = self._find_indeed_job_divs(page_number, job)
 
             for indeed_job in indeed_all_jobs:
-                if('href' in indeed_job.attrs):
+                if ('href' in indeed_job.attrs):
                     if 'jk' in indeed_job.attrs['href']:
-                        result = requests.get(f"https://ie.indeed.com/viewjob?{indeed_job.attrs['href'].strip('/rclk')}")
+                        result = requests.get(
+                            f"https://ie.indeed.com/viewjob?{indeed_job.attrs['href'].strip('/rclk')}")
                         inner_html = BeautifulSoup(result.content, "html.parser")
 
                         words = inner_html.find_all("div", {"id": re.compile(r"jobDescriptionText")})[0].text
-                        company = inner_html.find_all("div", {"class": re.compile(r"jobsearch-InlineCompanyRating")})[0].contents[0].text
+                        company = \
+                        inner_html.find_all("div", {"class": re.compile(r"jobsearch-InlineCompanyRating")})[0].contents[
+                            0].text
                         job_title = (inner_html.find_all("h1", {"class": re.compile(r"JobInfoHeader")})[0].text)
 
                         job_info = {
                             'company': company,
                             'role': job,
-                            'words' : words,
-                            'title' : job_title,
+                            'words': words,
+                            'title': job_title,
                             'wordFrequency': {}  # init an array, equal to the amount of words with 0.
                         }
                         self.all_jobs.append(job_info)
                 page_number += 1
 
-    def  get_word_count_in(self,job):
-            job['words'] =  word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
-            for word in job['words']:
-                if len(word) > 3 :
-                    word = wnl.lemmatize(word)
+    def get_word_count_in(self, job):
+        job['words'] = word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
+        for word in job['words']:
+            if len(word) > 3:
+                word = wnl.lemmatize(word)
 
-                    # Handle the two different scenarios of incrementing
-                    if word in job['wordFrequency']:
-                       job['wordFrequency'][word] += 1
-                    else:
-                        job['wordFrequency'][word] = 1
-
-                    if word in self.wordcount:
-                        self.wordcount[word] +=1
-                    else:
-                        self.words_list_from_indeed.append(word)
-                        self.wordcount[word] = 1
+                # Handle the two different scenarios of incrementing
+                if word in job['wordFrequency']:
+                    job['wordFrequency'][word] += 1
                 else:
-                    job['words'].remove(word)
+                    job['wordFrequency'][word] = 1
 
+                if word in self.wordcount:
+                    self.wordcount[word] += 1
+                else:
+                    self.words_list_from_indeed.append(word)
+                    self.wordcount[word] = 1
+            else:
+                job['words'].remove(word)
 
-            self.all_jobs[self.all_jobs.index(job)]['words'] = job['words']
+        self.all_jobs[self.all_jobs.index(job)]['words'] = job['words']
 
     def calculate_information_from_job(self):
-        all_labels = []
-        all_data = []
         for job in self.all_jobs:
-            print("---------------")
             print(job)
             self.get_word_count_in(job)
-            labels = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).keys())
-            data = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).values())
-            print(f"{data} \n, {labels} \n : Done")
+
+        ignore_words = ['this', 'that', 'these', 'those', 'with', 'will', 'their', 'help', 'when', 'without']
+        for word in ignore_words:
+            self.wordcount.pop(word, None)
 
     def search(self):
         self.find_indeed(self.job)
         self.calculate_information_from_job()
+        labels = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).keys())
+        data = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).values())
 
-        return "hello"
+        return_data = {
+        'labels': labels[:15],
+        'datasets': [{
+            'data': data[:15]
+        }]}
+        return return_data
 
     def __init__(self, job):
         self.helper = GenericHelper()
         self.job = job
-
-jobsearch = JobSearch('Fullstack engineer')
-jobsearch.search()

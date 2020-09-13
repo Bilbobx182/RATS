@@ -41,24 +41,15 @@ class Job(db.Model):
     job_id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.company_id'))
     company = relationship(Company, backref=backref('companies', uselist=True))
-
     contents = db.Column(db.String)
-    pay = db.Column(db.String)
     date_posted = db.Column(db.String)
-    has_pension = db.Column(db.Boolean)
-    has_healthcare = db.Column(db.Boolean)
-    has_stock = db.Column(db.Boolean)
 
-    def __init__(self, job_id, company_id, contents, pay, date_posted, has_pension, has_healthcare,
-                 has_stock):
+    def __init__(self, job_id, company_id, contents, date_posted):
         self.job_id = job_id
         self.company_id = company_id
         self.contents = contents
-        self.pay = pay
         self.date_posted = date_posted
-        self.has_pension = has_pension
-        self.has_stock = has_stock
-        self.has_healthcare = has_healthcare
+
 
     def __repr__(self):
         return '' % self.id

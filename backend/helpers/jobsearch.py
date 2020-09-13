@@ -5,6 +5,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from backend.helpers.genericHelper import GenericHelper
 import time
+
 wnl = WordNetLemmatizer()
 
 

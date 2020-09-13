@@ -30,12 +30,8 @@ def upgrade():
     op.create_table('job',
         sa.Column('job_id', sa.INTEGER, primary_key=True, autoincrement=True),
         sa.Column('company_id', sa.INTEGER,nullable=True),
-        sa.Column('pay', sa.VARCHAR, nullable=True),
         sa.Column('date_posted', sa.VARCHAR, nullable=True),
-        sa.Column('contents', sa.VARCHAR, nullable=True),
-        sa.Column('has_pension', sa.BOOLEAN, nullable=True),
-        sa.Column('has_healthcare', sa.BOOLEAN, nullable=True),
-        sa.Column('has_stock', sa.BOOLEAN, nullable=True))
+        sa.Column('contents', sa.VARCHAR, nullable=True))
 
 
     op.create_table('company',

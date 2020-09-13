@@ -1,11 +1,7 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from backend.models.database_models import Location ,Job, Company, Word
+from backend.models.database_models import  Job, Company, Word
 import graphene
 
-class LocaitonObject(SQLAlchemyObjectType):
-   class Meta:
-       model = Location
-       interfaces = (graphene.relay.Node, )
 
 class CompanyObject(SQLAlchemyObjectType):
    class Meta:
@@ -25,9 +21,8 @@ class JobObject(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     node = graphene.relay.Node.Field()
     all_companies = SQLAlchemyConnectionField(CompanyObject)
-    all_locations = SQLAlchemyConnectionField(LocaitonObject)
     all_jobs = SQLAlchemyConnectionField(JobObject)
-    all_words = SQLAlchemyConnectionField(LocaitonObject)
+    all_words = SQLAlchemyConnectionField(WordObject)
 
 def get_schema():
     return graphene.Schema(query=Query)

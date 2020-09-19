@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from backend.helpers.genericHelper import GenericHelper
+from helpers.genericHelper import GenericHelper
 import time
 
 wnl = WordNetLemmatizer()

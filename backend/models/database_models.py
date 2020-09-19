@@ -1,5 +1,5 @@
 from sqlalchemy.orm import relationship, backref
-from backend.extensions import db
+from extensions import db
 
 
 class Word(db.Model):

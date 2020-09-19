@@ -1,5 +1,5 @@
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
-from backend.models.database_models import  Job, Company, Word
+from models.database_models import  Job, Company, Word
 import graphene
 
 

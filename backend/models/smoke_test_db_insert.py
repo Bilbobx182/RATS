@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from backend.models.database_models import Word, Company, Job
+from models.database_models import Word, Company, Job
 
 engine = create_engine("postgres://ciarannolan@localhost/rats")
 Session = sessionmaker(bind=engine)

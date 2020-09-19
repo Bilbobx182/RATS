@@ -15,7 +15,19 @@ class DBHelper():
         self.session.add(company)
         self.session.commit()
 
-    def insertJob(self,job):
-        job = Job(job,company_id,content,self.today)
+    def insertJob(self,job_title,company_id,content):
+        job = Job(job_title,company_id,content,self.today)
         self.session.add(job)
         self.session.commit()
+
+    # def insertWord(self,word,job_fk,frequency):
+    #     objects = [
+    #         Word(word=word,jobs_fk=job_fk,frequency=fre),
+    #         User(name="u2"),
+    #         User(name="u3")
+    #     ]
+    #     s.bulk_save_objects(objects)
+    #     s.commit()
+    #     word = Word(word,job_fk,frequency)
+    #     self.session.add(word)
+    #     self.session.commit()

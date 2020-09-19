@@ -1,0 +1,10 @@
+FROM python:3.7
+WORKDIR /backend
+COPY ./requirements.txt /backend/requirements.txt
+RUN pip install -r requirements.txt
+RUN python3 -m nltk.downloader punkt
+RUN python3 -m nltk.downloader wordnet
+# Copy the project codes into the Work Directory
+COPY . /backend
+EXPOSE 5000
+CMD ["python", "app.py", "runserver"]

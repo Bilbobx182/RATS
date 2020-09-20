@@ -19,13 +19,23 @@ app.add_url_rule(
 )
 
 
-@app.route('/dummy_words', methods=['POST'])
+@app.route('/get_job_words', methods=['POST'])
 def user():
     if request.method == 'POST':
-        js = JobSearch(request.json['title'])
-        data = js.search()
-        print(data)
-        return jsonify(data)
+        try:
+            js = JobSearch(request.json['title'])
+            data = js.search()
+            print(data)
+            return jsonify(data)
+        except Exception as e:
+            return jsonify({
+        'labels': ['EXCEPTION OCCURRED PLEASE TRY AGAIN'],
+        'datasets': [{
+            'data': [500]
+        }]})
+
+
+
 
 
 @app.route('/')

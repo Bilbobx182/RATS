@@ -44,21 +44,32 @@ So here are the project milestones.
 
 - [X] Create Menu section to React app.
 - [X] Render graph in REACT.
-- [ ] Update REACT frontend to host colours for graphs in state.
-- [ ] Add search dropdown type.
-- [ ] Create ListView of companies and jobs posted.
-- [ ] Create plan for cloud provider of choice (not you Azure).
-- [ ] Create infra for project using Terraform.
-- [ ] Create cron to insert data
-- [ ] Deploy!
+- [X] Update REACT frontend to host colours for graphs in state.
+- [X] Update database tables to reflect latest state.
+- [X] Update backend to fix Indeed Changes.
 
 
 ### Phase 2 : Lego (Putting the building blocks of infrasture together)
-- [ ] Dockerise the frontend and backend.
-
-- [ ] Investigate GCP (since I know how to do this in AWS best to broaden mysef)
+- [X] Dockerise the frontend and backend.
 - [ ] Create plan for cloud provider of choice (not you Azure).
-- [ ] Create infra for project using Terraform.
-- [ ] Create cron to insert data
+- [ ] Stand up Load balancer. Instace,
 - [ ] Deploy!
+
+### Phase 3 : Enhance!
+- [ ] Update backend to handle inserts.
+- [ ] Add search dropdown type.
+- [ ] Create ListView of companies and jobs posted.
+- [ ] Improve backend performance to be less than 10 seconds per request.
+- [ ] Implement loading icon when waiting for request to finish.
+- [ ] Return failure error message on exceptions
+
+
+## Architecture 
+
+AWS Concept :
+-  EC2 instance running postgres (Save cost don't have an RDS for a real prod of course you would)
+    - FLASK + GraphQL running as a container.
+    - React Running as a container
+-  ELB directing traffic to containers accordingly.
+-  Route53 entry with a DNS for the API and a DNS for the site.
 

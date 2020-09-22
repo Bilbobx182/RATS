@@ -7,5 +7,6 @@ RUN python3 -m nltk.downloader punkt
 RUN python3 -m nltk.downloader wordnet
 # Copy the project codes into the Work Directory
 COPY . /backend
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 EXPOSE 5000
 CMD ["python", "app.py", "runserver"]

@@ -9,4 +9,8 @@ RUN npm run build
 FROM nginx:1.15-alpine
 COPY --from=build-stage /app/build/ /usr/share/nginx/html
 # Copy the default nginx.conf provided by tiangolo/node-frontend
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build-stage /app/ssl/ /etc/nginx/ciaranssl/
+COPY --from=build-stage /app/ssl/onuallaic.dev.key /etc/nginx/ciaranssl/onuallaic.dev.key
+
+COPY --from=build-stage /app/default.conf /etc/nginx/conf.d/default.conf

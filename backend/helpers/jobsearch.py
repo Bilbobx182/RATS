@@ -61,38 +61,51 @@ class JobSearch:
                 page_number += 1
 
     def get_word_count_in(self, job):
+        try:
+            ignore_words = ['this','have','has', 'from', 'that', 'these', 'those', 'with', 'will', 'their', 'help', 'when', 'without',
+                            'work', 'your', 'including','about']
 
-        ignore_words = ['this','have','has', 'from', 'that', 'these', 'those', 'with', 'will', 'their', 'help', 'when', 'without',
-                        'work', 'your', 'including','about']
+            job['words'] = word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
 
-        job['words'] = word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
+            for word in job['words']:
+                if word in ignore_words:
+                    job['words'].remove(word)
+                elif len(word) > 3:
+                    word = wnl.lemmatize(word)
+                    # Handle the two different scenarios of incrementing
+                    if word in job['wordFrequency']:
+                        job['wordFrequency'][word] += 1
+                    else:
+                        job['wordFrequency'][word] = 1
 
-        for word in job['words']:
-            if word in ignore_words:
-                job['words'].remove(word)
-            elif len(word) > 3:
-                word = wnl.lemmatize(word)
-                # Handle the two different scenarios of incrementing
-                if word in job['wordFrequency']:
-                    job['wordFrequency'][word] += 1
+                    if word in self.wordcount:
+                        self.wordcount[word] += 1
+                    else:
+                        self.words_list_from_indeed.append(word)
+                        self.wordcount[word] = 1
                 else:
-                    job['wordFrequency'][word] = 1
+                    job['words'].remove(word)
 
-                if word in self.wordcount:
-                    self.wordcount[word] += 1
-                else:
-                    self.words_list_from_indeed.append(word)
-                    self.wordcount[word] = 1
-            else:
-                job['words'].remove(word)
+            job_index = self.all_jobs.index(job)
+            print(job_index)
+            print(self.all_jobs[job_index])
 
-        self.all_jobs[self.all_jobs.index(job)]['words'] = job['words']
+
+            self.all_jobs[job_index]['words'] = job['words']
+        except Exception as e:
+            print("LOL")
 
     def calculate_information_from_job(self):
         for job in self.all_jobs:
             self.get_word_count_in(job)
 
+    def clear_self(self):
+        self.all_jobs = []
+        self.words_list_from_indeed = []
+        self.wordcount = {}
+
     def search(self):
+        self.clear_self()
         start = time.time()
         self.find_indeed(self.job)
         self.calculate_information_from_job()

@@ -1,0 +1,2 @@
+./makebackend.sh
+./makefrontend.sh

@@ -1,4 +1,4 @@
-cd frontend
+cd ../frontend
 frontend="frontendrats"
 cp ~/.ssh/ssl_onuallainc.key .
 sudo docker build --tag $frontend .

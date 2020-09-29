@@ -29,13 +29,10 @@ def user():
             return jsonify(data)
         except Exception as e:
             return jsonify({
-        'labels': ['EXCEPTION OCCURRED PLEASE TRY AGAIN'],
-        'datasets': [{
-            'data': [500]
-        }]})
-
-
-
+                'labels': ['EXCEPTION OCCURRED PLEASE TRY AGAIN'],
+                'datasets': [{
+                    'data': [500]
+                }]})
 
 
 @app.route('/')

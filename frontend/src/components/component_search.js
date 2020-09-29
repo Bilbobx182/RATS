@@ -36,7 +36,7 @@ export class Search extends React.Component {
         console.log("PERFORMING REQUEST");
 
         (async () => {
-            const rawResponse = await fetch('http://34.105.225.105:5000/get_job_words', {
+            const rawResponse = await fetch('https://onuallainc.dev:5000/get_job_words', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

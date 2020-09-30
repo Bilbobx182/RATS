@@ -46,4 +46,4 @@ if __name__ == '__main__':
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db = SQLAlchemy(app)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',ssl_context=('onuallainc_dev.crt', 'onuallaic.dev.key'))

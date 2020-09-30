@@ -1,6 +1,6 @@
 
 cd ../backend
-backend="backendrats"
+backend="backendrats_ssl1"
 cp ~/.ssh/ssl_onuallainc.key .
 sudo docker build --tag $backend .
 docker tag $backend gcr.io/rats-290113/$backend

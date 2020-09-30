@@ -1,15 +1,12 @@
 FROM tiangolo/meinheld-gunicorn-flask:python3.7
 
-WORKDIR /backend
-COPY ./requirements.txt /backend/requirements.txt
-RUN pip install -r requirements.txt
+WORKDIR /api
+RUN apt-get update && apt-get install -y git ca-certificates
+COPY . /api
+COPY ./ssl /etc/nginx/
+RUN pip3 install -r requirements.txt
 
-RUN python3 -m nltk.downloader punkt
-RUN python3 -m nltk.downloader wordnet
-# Copy the project codes into the Work Directory
-COPY . /backend
-COPY /backend/ssl/ /etc/nginx/ciaranssl/
-COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+Run python -c "import nltk; nltk.download(['punkt', 'wordnet'])"
 
 EXPOSE 3000
 EXPOSE 5000

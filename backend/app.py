@@ -19,7 +19,7 @@ app.add_url_rule(
 )
 
 
-@app.route('/get_job_words', methods=['POST'])
+@app.route('/get_words_indeed', methods=['POST'])
 def user():
     if request.method == 'POST':
         try:

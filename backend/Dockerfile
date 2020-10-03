@@ -1,14 +1,9 @@
-FROM tiangolo/meinheld-gunicorn-flask:python3.7
-
-WORKDIR /api
-RUN apt-get update && apt-get install -y git ca-certificates
-COPY . /api
-COPY ./ssl /ssl
-COPY ./ssl /api
+FROM python:3.7
+WORKDIR /app
+COPY . /app
+COPY /ssl /app/
+RUN ls /app
+RUN apt-get update && apt-get install -y git ca-certificates && apt-get install nano
 RUN pip3 install -r requirements.txt
-
-Run python -c "import nltk; nltk.download(['punkt', 'wordnet'])"
-
-EXPOSE 3000
-EXPOSE 5000
-CMD ["python", "app.py", "runserver"]
+RUN python -c "import nltk; nltk.download(['punkt', 'wordnet'])"
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0","--port=5000","--cert=onuallainc_dev.crt", "--key=onuallaic.dev.key"]

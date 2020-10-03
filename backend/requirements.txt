@@ -7,5 +7,6 @@ psycopg2-binary #Postgres Database adapter
 flask #Common minimalistic API tool.
 flask-graphql # Adds GraphQL support to your Flask application.
 flask-migrate
+flask-cors
 graphene
 graphene-sqlalchemy

@@ -57,8 +57,12 @@ So here are the project milestones.
 - [X] Deploy!
 
 ### Phase 3 : Enhance!
+- [ ] Implement DB support for Cloud instances.
+- [ ] Implement GraphQL Frontend Support.
 - [ ] Update backend to handle inserts.
 - [ ] Add search dropdown type.
+- [ ] Add support for different locations, defaulted to DUBLIN, IRELAND right now.
+- [ ] Add support for returning origin of data.
 - [ ] Create ListView of companies and jobs posted.
 - [ ] Improve backend performance to be less than 10 seconds per request.
 - [ ] Implement loading icon when waiting for request to finish.
@@ -79,14 +83,3 @@ GCP Concept :
     - React Running as a container
 
 - Why monorepo, honestly, for the sake of showing off this project, I thought it best to keep everything together. If this was a production system, I'd have split them up.
-
-
-
-## Hitting API directly
-
-```
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"title":"Frontend Engineer"}' \
- https://onuallainc.dev:5000/get_jobs
- ```

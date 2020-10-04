@@ -45,7 +45,8 @@ class JobSearch:
                         try:
                             words = inner_html.find_all("div", {"id": re.compile(r"jobDescriptionText")})[0].text
                             company = \
-                            inner_html.find_all("div", {"class": re.compile(r"jobsearch-InlineCompanyRating")})[0].contents[0].text
+                                inner_html.find_all("div", {"class": re.compile(r"jobsearch-InlineCompanyRating")})[
+                                    0].contents[0].text
                             job_title = (inner_html.find_all("h1", {"class": re.compile(r"JobInfoHeader")})[0].text)
 
                             job_info = {
@@ -62,8 +63,8 @@ class JobSearch:
 
     def get_word_count_in(self, job):
         try:
-            ignore_words = ['this','have','has', 'from', 'that', 'these', 'those', 'with', 'will', 'their', 'help', 'when', 'without',
-                            'work', 'your', 'including','about']
+            ignore_words = ['this', 'have', 'has', 'from', 'that', 'these', 'those', 'with', 'will', 'their', 'help',
+                            'when', 'without', 'work', 'your', 'including', 'about', 'what', 'team','across']
 
             job['words'] = word_tokenize(re.sub(r'\W+', ' ', job['words'].lower()).strip())
 
@@ -90,7 +91,6 @@ class JobSearch:
             print(job_index)
             print(self.all_jobs[job_index])
 
-
             self.all_jobs[job_index]['words'] = job['words']
         except Exception as e:
             print("LOL")
@@ -113,10 +113,10 @@ class JobSearch:
         data = list(({k: v for k, v in sorted(self.wordcount.items(), reverse=True, key=lambda x: x[1])}).values())
 
         return_data = {
-        'labels': labels[:15],
-        'datasets': [{
-            'data': data[:15]
-        }]}
+            'labels': labels[:15],
+            'datasets': [{
+                'data': data[:15]
+            }]}
         end = time.time()
         return return_data
 

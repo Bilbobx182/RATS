@@ -15,9 +15,8 @@ export class CardedDonutChart extends React.Component {
                 <EuiFlexGroup justifyContent="flexEnd">
                     <EuiFlexItem>
                         <EuiCard
-
                             textAlign="Center"
-                            title="Word Frequency"
+                            title="Word frequency analysis of jobs in Dublin"
                             description={
                                 <span>
                                     <div className="ChartStyle">

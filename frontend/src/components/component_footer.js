@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { EuiButton, EuiControlBar } from '@elastic/eui';
 
 export class FooterComponent extends React.Component {

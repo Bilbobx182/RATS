@@ -16,8 +16,3 @@ const Location = ({ item: { city } }) => (
   </div>
 )
 
-
-{/* 
-TODO Configure colour themes
-*/}
-
